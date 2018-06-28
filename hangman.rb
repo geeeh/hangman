@@ -3,7 +3,7 @@ require 'yaml'
 # class hangman
 class Hangman
   def initialize(secret_word = nil, _count = 6, _chars = [])
-    secret_word ||= pick_secret_word('word_list')
+    secret_word ||= pick_secret_word('lib/word_list')
     @secret_word = secret_word
     @guess_count = _count
     @characters_guessed_correctly = _chars
@@ -65,7 +65,7 @@ class Hangman
   # save the current game
   def save_game
     store = YAML.dump(self)
-    File.open('saved_game.yml', 'w') do |file|
+    File.open('lib/saved_game.yml', 'w') do |file|
       file.puts(store)
     end
     puts 'your game has been saved!'
@@ -79,7 +79,7 @@ class Game
     if option == 'start'
       hangman = Hangman.new
     else
-      store = YAML.load(File.read('saved_game.yml'))
+      store = YAML.load(File.read('lib/saved_game.yml'))
       characters = store.instance_variable_get('@characters_guessed_correctly')
       guess_count = store.instance_variable_get('@guess_count')
       secret_word = store.instance_variable_get('@secret_word')
