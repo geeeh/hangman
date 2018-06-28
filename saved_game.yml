@@ -1,0 +1,5 @@
+--- !ruby/object:Hangman
+secret_word: therese
+guess_count: 6
+characters_guessed_correctly: []
+word_guessed: _______
